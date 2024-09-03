@@ -465,5 +465,8 @@ Exercise 4: Recreate the box-plot below
 
 ```{r exercise4, exercise = TRUE}
 # your code here
+ggplot(data = diamonds, aes(x = cut, y = price)) +
+  geom_boxplot() +
+  labs(title = "Box Plot of Price by Cut", x = "Cut", y = "Price ($)")
 
 ```
