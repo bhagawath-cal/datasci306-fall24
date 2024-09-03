@@ -374,6 +374,8 @@ dat = tibble(
 
 # Your code here
 
+subset(dat, grade > 90 & is_bender)
+
 ```
 
 ### A Large Dataset
