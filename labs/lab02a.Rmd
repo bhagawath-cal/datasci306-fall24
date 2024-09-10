@@ -92,7 +92,7 @@ Modify the code below so that the point shape varies by drive train.
 
 ```{r exercise1a, exercise=TRUE}
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = cty, y = hwy, color = drv))
+  geom_point(mapping = aes(x = cty, y = hwy, color = drv, shape = drv))
 ```
 
 #### (b) {-}
@@ -103,7 +103,7 @@ Modify the code below so that each point is a triangle. How is your code differe
 
 ```{r exercise1b, exercise=TRUE}
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x = cty, y = hwy, color = drv))
+  geom_point(mapping = aes(x = cty, y = hwy, color = drv), shape = "triangle")
 ```
 
 
@@ -187,7 +187,10 @@ midwest %>%
 Make a plot of `percadultpoverty` versus `perchsd` that has both points and a smooth.
 
 ```{r exercise2a, exercise=TRUE}
-
+midwest %>%
+  ggplot(aes(perchsd, percadultpoverty)) +
+  geom_point() + 
+  geom_smooth(se = FALSE)
 ```
 
 
@@ -198,7 +201,10 @@ Make a plot that is the same as the one in part (a), except with a confidence in
 *Hint: look at the help page for `geom_smooth()` to make the interval*
 
 ```{r exercise2b, exercise=TRUE}
-
+midwest %>%
+  ggplot(aes(perchsd, percadultpoverty)) +
+  geom_point() + 
+  geom_smooth(se = TRUE)
 ```
 
 ##### (c) {-}
@@ -208,7 +214,10 @@ You might have noticed that the smooth in part (b) was calculated using a method
 *Hint: look at the help page for `geom_smooth()` again*
 
 ```{r exercise2c, exercise=TRUE}
-
+midwest %>%
+  ggplot(aes(perchsd, percadultpoverty)) +
+  geom_point() +
+  geom_smooth(method = "lm")
 ```
 
 
@@ -239,7 +248,9 @@ A `histogram` is another plot meant for a continuous variable.
 Instead of drawing multiple boxplots to visualize the relationship between `percollege` and `state`, we could use histograms. Make one plot that has a histogram of `percollege` for each value of `state`. Give the histograms different colors. How does this plot compare to the boxplot?
 
 ```{r exercise3a, exercise=TRUE}
-
+midwest %>%
+  ggplot(aes(percollege, color = state)) + 
+  geom_histogram()
 ```
 
 
@@ -248,7 +259,9 @@ Instead of drawing multiple boxplots to visualize the relationship between `perc
 Now make a one plot that has a frequency polygon for each state instead of a histogram. Give the frequency polygons different colors. How does this plot compare to the preceding plots?
 
 ```{r exercise3b, exercise=TRUE}
-
+midwest %>%
+  ggplot(aes(percollege, color = state)) +
+  geom_freqpoly()
 ```
 
 
@@ -259,7 +272,8 @@ Complete the code below to use boxplots to visualize the relationship between `i
 ```{r exercise3c, exercise=TRUE}
 midwest %>%
   mutate(inmetro = as.logical(inmetro)) %>%
-  ggplot()
+  ggplot(aes(inmetro, percollege)) +
+  geom_boxplot()
 ```
 
 
@@ -271,7 +285,8 @@ Now complete the code to use frequency polygons to visualize the relationship. I
 ```{r exercise3d, exercise=TRUE}
 midwest %>%
   mutate(inmetro = as.logical(inmetro)) %>%
-  ggplot
+  ggplot(aes(percollege, color = inmetro)) +
+  geom_freqpoly()
 ```
 
 
