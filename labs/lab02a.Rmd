@@ -373,7 +373,10 @@ Let's return to the situation considered in Exercise 2(a). Again make a plot of 
 *Hint: look at an appropriate help page*
 
 ```{r exercise4a, exercise=TRUE}
-
+midwest %>%
+  ggplot(aes(perchsd, percadultpoverty)) +
+  geom_point() +
+  geom_smooth(span = 0.1)
 ```
 
 
@@ -384,5 +387,8 @@ Like you did in Exercise 2(b), make a scatterplot of `percadultpoverty` versus `
 *Hint: take another look at the documentation*
 
 ```{r exercise4b, exercise=TRUE}
-
+midwest %>%
+  ggplot(aes(perchsd, percadultpoverty)) +
+  geom_point() +
+  geom_smooth(level = 0.5)
 ```
