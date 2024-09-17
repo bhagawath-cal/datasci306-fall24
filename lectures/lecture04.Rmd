@@ -1,5 +1,5 @@
 ---
-title: "Stats 306: Lecture 4"
+title: "DATASCI 306: Lecture 4"
 subtitle: "Graphics: Facets, Coordinate Systems"
 output: 
   learnr::tutorial:
@@ -31,7 +31,9 @@ class(mpg$class) # categorical
 class(factor(mpg$cyl)) # categorical
 ```
 
-
+```{r}
+aatemp <- read_csv("data/ann_arbor_weather.csv.gz")
+```
 
 ## `ggplot` and types of data
 
@@ -42,6 +44,9 @@ By default, `cyl` will be treated as continuous quantitative variable:
 ggplot(data = mpg, aes(x = hwy, y = cty, color = cyl)) +
   geom_jitter(size = 2)
 ```
+
+
+  
 
 **Forcing variables to be categorical**
 
